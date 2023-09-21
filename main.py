@@ -1,17 +1,23 @@
-import os
-import shutil
-from datetime import datetime
+from tkinter import *
+from searchFile import module1
 
-source_folder = '/path/to/source/dat/folder'
-destination_folder = '/path/to/destination/folder'
-cutoff_time = datetime(2023, 9, 1)  # 특정 시점 이후의 파일을 복사
+## 윈도우 기본 설정
+window = Tk()
+window.title("Flie Maid")
+window.geometry("300x350")
+window.resizable(False, False)
 
-def copy_new_files(source, destination, cutoff_time):
-    for root, dirs, files in os.walk(source_folder):
-        for file in files:
-            file_path = os.path.join(root, file)
-            file_creation_time = datetime.fromtimestamp(os.path.getctime(file_path))
-            if file_creation_time > cutoff_time:
-                shutil.copy(file_path, os.path.join(destination_folder, file))
 
-copy_new_files(source_folder, destination_folder, cutoff_time)
+
+button1 = Button(text="파일 탐색", command=lambda: switch_module(module1), width=30, height=3)
+##button2 = Button(text="x", command=lambda: switch_module(module1), width=30, height=3)
+##button3 = Button(text="x", command=lambda: switch_module(module1), width=30, height=3)
+
+
+button1.pack(side=TOP, pady=10)
+##button2.pack(side=TOP, pady=10)
+##button3.pack(side=TOP, pady=10)
+
+
+
+window.mainloop()
